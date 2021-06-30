@@ -1,0 +1,9 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block container %}
+ <div class="col-sm-10 my-4">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.description }}</p>
+     <a class="btn btn-success" href="{% url 'home' %}">Back To Home</a>
+ </div>
+{% endblock %}

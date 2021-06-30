@@ -1,0 +1,52 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block container %}
+ <div class="col-sm-12 my-4">
+<h2 class="text-center">Dashboard</h2>
+    {% if total_post %}
+        <form action="" method="post">
+        {% csrf_token %}
+            <a class="btn btn-success" href="{% url 'create' %}">Add New Post</a>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th class="text-center" scope="col">Description</th>
+                <th scope="col">Action</th>
+            </tr>
+          </thead>
+            {% for update in total_post %}
+              <tbody>
+                <tr>
+                  <th scope="row">{{ update.id }}</th>
+                  <td>{{ update.title }}</td>
+                  <td>{{ update.description | truncatewords:50 }} </td>
+                  <td class="d-flex">
+                      <a class="btn-sm btn-warning" href="{% url 'update' update.id %}">Update</a>
+                      <form action="#" method="post">
+                          {% csrf_token %}
+                          <input class="btn-sm btn btn-danger" type="submit" value="Delete">
+                      </form>
+                  </td>
+                </tr>
+              </tbody>
+            {% endfor %}
+        </table>
+        </form>
+        {% else %}
+        <h2 class="text-center text-warning my-4">Not Available Post</h2>
+        {% endif %}
+ <nav aria-label="Page navigation example">
+  <ul class="pagination">
+     {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link"href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+    {% endif %}
+    <li class="page-item"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+    {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+    {% endif %}
+  </ul>
+</nav>
+ </div>
+{% endblock %}

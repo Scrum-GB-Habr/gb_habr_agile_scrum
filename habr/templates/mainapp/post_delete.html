@@ -1,0 +1,16 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block container %}
+    <div class="col-sm-2"></div>
+ <div class="col-sm-8 my-4">
+ <h2 class="text-center">Delete Page</h2>
+     <hr>
+     <form action="" method="post" novalidate>
+         {% csrf_token %}
+         {{ form.as_p }}
+         <input class="btn btn-success" type="submit" value="Delete">
+         <a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+     </form>
+ </div>
+    <div class="col-sm-2"></div>
+{% endblock %}

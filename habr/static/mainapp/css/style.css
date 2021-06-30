@@ -1,0 +1,41 @@
+body {
+    background-color: #0c5460;
+    color: whitesmoke;
+    text-align: justify;
+}
+
+h6 {
+    text-align: center;
+}
+
+hr {
+    border: 1px solid #1e7e34;
+}
+
+.navbar {
+    background-color: #008080;
+}
+
+.navbar .navbar-brand {
+    color: white;
+    font-weight: bolder;
+    font-size: 1.3em;
+}
+
+.navbar .navbar-brand:hover {
+    color: yellowgreen;
+
+}
+
+.navbar .navbar-nav {
+    margin: 0 auto;
+    color: whitesmoke;
+}
+
+.navbar .nav-item a {
+    color: white !important;
+}
+
+.navbar .nav-item a:hover {
+    color: Yellow !important;
+}
