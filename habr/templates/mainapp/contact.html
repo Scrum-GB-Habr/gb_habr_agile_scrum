@@ -9,7 +9,7 @@
          {% csrf_token %}
          {{ form.as_p }}
          <input class="btn btn-success" type="submit" value="Send Massage">
-         <a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+         <a class="btn btn-warning" href="{% url 'main:home' %}">Cancel</a>
      </form>
  </div>
     <div class="col-sm-2"></div>

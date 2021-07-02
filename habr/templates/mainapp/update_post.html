@@ -8,7 +8,7 @@
          {% csrf_token %}
          {{ form.as_p }}
          <input class="btn btn-success" type="submit" value="Update Post">
-         <a class="btn btn-warning" href="{% url 'dashboard' %}">Cancel</a>
+         <a class="btn btn-warning" href="{% url 'main:dashboard' %}">Cancel</a>
      </form>
  </div>
 {% endblock %}

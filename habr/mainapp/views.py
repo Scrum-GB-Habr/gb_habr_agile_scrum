@@ -3,6 +3,7 @@ from .models import Post
 from .forms import PostForm, ContactForm
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView, TemplateView
 
+
 class PostListView(ListView):
     model = Post
     template_name = 'mainapp/home.html'
