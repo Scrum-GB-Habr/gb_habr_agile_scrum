@@ -14,6 +14,17 @@
        <li class="nav-item">
         <a class="nav-link" href="{% url 'main:dashboard' %}">Dashboard</a>
       </li>
+<<<<<<< Updated upstream
+=======
+
+      {% if user.is_authenticated %}
+      <li class="nav-item" >
+          <a class="nav-link" href="{% url 'auth:edit' %}">
+            {{ user.first_name|default:'Пользователь' }}
+          </a>
+      </li>
+      {% endif %}
+>>>>>>> Stashed changes
       <li class="nav-item">
         <a class="nav-link" href="#">Log In</a>
       </li>
