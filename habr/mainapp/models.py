@@ -48,4 +48,16 @@ class SubCategory(models.Model):
         verbose_name = 'подкатегория'
         verbose_name_plural = 'подкатегории'
 
+class ArticleSubcat(models.Model):
+    article = models.ForeignKey(Post, on_delete=models.PROTECT)
+    subcat = models.ForeignKey(SubCategory, on_delete=models.PROTECT)
+    # Служебные
+    date_create = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.article}-{self.subcat}'
+
+    class Meta:
+        verbose_name = 'подкатегория статьи'
+        verbose_name_plural = 'подкатегории статьи'
 
