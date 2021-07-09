@@ -1,3 +1,4 @@
+import mainapp.views
 from django.conf import settings
 from django.http import Http404
 from django.urls import reverse_lazy
@@ -50,7 +51,7 @@ class LoginView(FormView):
     form_class = forms.LoginUserForm
     template_name = 'authapp/login.html'
     redirect_field_name = REDIRECT_FIELD_NAME
-    success_url = reverse_lazy('')
+    success_url = reverse_lazy('mainapp:home')
 
     @method_decorator(sensitive_post_parameters('password'))
     @method_decorator(csrf_protect)
@@ -86,7 +87,7 @@ class LoginView(FormView):
         return redirect_to
 
 class LogoutView(LoginRequiredMixin, RedirectView):
-    url = ''
+    url = '/'
 
     @method_decorator(never_cache)
     def dispatch(self, request, *args, **kwargs):

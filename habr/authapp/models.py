@@ -38,7 +38,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return True
     
     def has_module_permissions(self, app_label):
-         return True
+        return True
     
     @property
     def get_nickname(self):
@@ -46,10 +46,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     @property
     def is_staff(self):
-         return self.is_admin
+        return self.is_admin
     
     def __str__(self):
-         return self.email
+        return self.email
     
     def save(self, *args, **kwargs):
         if not self.password:
