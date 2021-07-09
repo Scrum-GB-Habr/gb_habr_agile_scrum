@@ -10,6 +10,5 @@ urlpatterns = [
     path('success/', views.PostSuccessMessageView.as_view(), name='success'),
     path('dashboard/', views.PostDashboardView.as_view(), name='dashboard'),
     path('update/<int:pk>/', views.PostUpdateView.as_view(), name='update'),
-    path('contact/', views.Contact.as_view(), name='contact'),
-    path('delete/<int:pk>/', views.PostDeleteView.as_view(), name='delete'),
+    path('delete/<int:pk>/', views.PostDeleteView.as_view(), name='delete')
 ]

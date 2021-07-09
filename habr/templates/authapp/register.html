@@ -1,0 +1,14 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+{% block title %} {{ block.super }} - Register {% endblock %}
+{% block content %}
+
+<div>
+    <form method="POST" action="{% url 'authapp:register' %}">
+        <h1>Register</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+  </form>
+</div>
+{% endblock content %}

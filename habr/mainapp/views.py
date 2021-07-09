@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Post
-from .forms import PostForm, ContactForm
+from .forms import PostForm
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView, TemplateView
 
 
@@ -69,17 +69,6 @@ class PostUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Blog | Update'
-        return context
-
-
-class Contact(CreateView):
-    form_class = ContactForm
-    success_url = '/success/'
-    template_name = 'mainapp/contact.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Blog | Contact'
         return context
 
 
