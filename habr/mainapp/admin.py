@@ -27,4 +27,3 @@ class PostModelAdmin(admin.ModelAdmin):
 @admin.register(ArticleSubcat)
 class PostModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'article', 'subcat', 'created_at']
-

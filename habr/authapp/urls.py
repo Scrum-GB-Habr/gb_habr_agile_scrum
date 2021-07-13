@@ -8,7 +8,6 @@ urlpatterns = [
     path('login/', authapp.login, name='login'),
     path('logout/', authapp.logout, name='logout'),
     path('register/', authapp.register, name='register'),
-    path('edit/', authapp.edit, name='edit'), # чтобы можно было редактировать профиль
-
+    path('edit/', authapp.edit, name='edit'),  # чтобы можно было редактировать профиль
+    path('password/', authapp.change_password, name='change_password'),
 ]
-

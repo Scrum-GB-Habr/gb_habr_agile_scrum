@@ -3,24 +3,25 @@
 
 
 {% block content %}
-            <div class="h2 text-center head">
-                {{ title }}
-            </div>
+    <div class="h2 text-center head">
+        {{ title }}
+    </div>
 
     {% if user.avatar %}
-       <div class="user_avatar"><img src="/media/{{ user.avatar }}" style="width:200px;" ></div>
+        <div class="user_avatar"><img src="/media/{{ user.avatar }}" style="width:200px;"></div>
     {% else %}
         <img src="/media/{{ object.avatar|default:'users_avatars/default.jpg' }}" style="width:200px;">
     {% endif %}
     <form class="form-horizontal" action="{% url 'auth:edit' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ edit_form.as_p }}
-        <input class="form-control" type="submit" value="сохранить">
-    </form>
-    <button class="btn btn-round form-control last">
-        <a href="{% url 'main:home' %}" class="">
-            на главную
+        <a class="btn btn-round btn-light form-control mb-3 mt-5" href="{% url 'auth:change_password' %}" role="button">
+            Изменить пароль
         </a>
-    </button>
+        <input class="btn btn-round btn-success form-control mb-3" type="submit" value="Сохранить">
+        <a class="btn btn-round btn-warning form-control mb-3" href="{% url 'main:home' %}" role="button">
+            На главную
+        </a>
+    </form>
 
 {% endblock %}

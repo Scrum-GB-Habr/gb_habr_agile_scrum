@@ -1,8 +1,9 @@
 from django.shortcuts import render, HttpResponseRedirect
-from authapp.forms import AuthorizedLoginUser, UserRegisterForm, UserEditPrifile
+from authapp.forms import AuthorizedLoginUser, UserRegisterForm, UserEditProfile, UserPasswordForm
 
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.urls import reverse
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 
 
@@ -21,6 +22,7 @@ def login(request):
 
     content = {'title': title, 'login_form': login_form}
     return render(request, 'authapp/login.html', content)
+
 
 @login_required
 def logout(request):
@@ -45,19 +47,37 @@ def register(request):
     return render(request, 'authapp/register.html', content)
 
 
-def edit(request): # чтобы можно было редактировать профиль
+@login_required
+def edit(request):  # чтобы можно было редактировать профиль
     title = 'Profile'
 
     if request.method == 'POST':
-        edit_form = UserEditPrifile(request.POST, request.FILES, instance=request.user)
+        edit_form = UserEditProfile(request.POST, request.FILES, instance=request.user)
         if edit_form.is_valid():
             edit_form.save()
             return HttpResponseRedirect(reverse('auth:edit'))
     else:
-        edit_form = UserEditPrifile(instance=request.user)
+        edit_form = UserEditProfile(instance=request.user)
 
     content = {'title': title, 'edit_form': edit_form}
 
     return render(request, 'authapp/edit.html', content)
 
 
+@login_required
+def change_password(request):  # смена пароля пользователя
+    title = 'Change password'
+    if request.method == 'POST':
+        password_form = UserPasswordForm(request.user, request.POST)
+        if password_form.is_valid():
+            user = password_form.save()
+            update_session_auth_hash(request, user)  # меняем пароль в сессии, чтобы не вводить заново
+            messages.success(request, 'Your password was successfully updated!')
+            return HttpResponseRedirect(reverse('auth:edit'))
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        password_form = UserPasswordForm(request.user)
+
+    content = {'title': title, 'password_form': password_form}
+    return render(request, 'authapp/change_password.html', content)
