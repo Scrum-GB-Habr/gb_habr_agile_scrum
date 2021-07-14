@@ -1,4 +1,6 @@
+from django.core.exceptions import ImproperlyConfigured
 from django.shortcuts import render
+from django.forms import models as model_forms
 from .models import Post
 from .forms import PostForm, ContactForm
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView, TemplateView
@@ -51,7 +53,7 @@ class PostDashboardView(ListView):
     model = Post
     context_object_name = 'total_post'
     ordering = ['-created_at']
-    paginate_by = 3
+    paginate_by = 10
     template_name = 'mainapp/dashboard.html'
 
     def get_context_data(self, **kwargs):

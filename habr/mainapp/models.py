@@ -1,7 +1,10 @@
-from django.db import models
+from django.db import models, router
+
+from authapp.models import AuthorizedUser
 
 
 class Post(models.Model):
+    user = models.ForeignKey(AuthorizedUser, on_delete=models.CASCADE, verbose_name='Пользователь')
     title = models.CharField(max_length=70)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

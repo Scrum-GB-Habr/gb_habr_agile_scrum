@@ -3,10 +3,10 @@
 {% block container %}
     <div class="col-sm-12 my-4">
         <h2 class="text-center">Dashboard</h2>
-        {% if total_post %}
-            <form action="" method="post">
-                {% csrf_token %}
-                <a class="btn btn-success" href="{% url 'main:create' %}">Add New Post</a>
+        <form action="" method="post">
+            {% csrf_token %}
+            <a class="btn btn-success" href="{% url 'main:create' %}">Add New Post</a>
+            {% if total_post %}
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -33,10 +33,10 @@
                         </tbody>
                     {% endfor %}
                 </table>
-            </form>
-        {% else %}
-            <h2 class="text-center text-warning my-4">Not Available Post</h2>
-        {% endif %}
+                </form>
+            {% else %}
+                <h2 class="text-center text-warning my-4">Not Available Post</h2>
+            {% endif %}
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 {% if page_obj.has_previous %}

@@ -1,11 +1,15 @@
 from django import forms
+
+from authapp.models import AuthorizedUser
 from .models import Post, Contact
 
 
 class PostForm(forms.ModelForm):
+
     class Meta:
         model = Post
         fields = "__all__"
+        # fields = ('title', 'description',)
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
