@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import AuthorizedUser
 
-# Register your models here.
+@admin.register(AuthorizedUser)
+class PostModelAdmin(admin.ModelAdmin):
+    pass
