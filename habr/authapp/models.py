@@ -11,7 +11,14 @@ class AuthorizedUser(AbstractUser):
         (FEMALE, 'Ж'),
     )
 
-    avatar = models.ImageField(upload_to='users_avatars', blank=True, verbose_name='аватар')
+    avatar = models.ImageField(
+        upload_to='users_avatars',
+        blank=True,
+        verbose_name='аватар')
     age = models.PositiveSmallIntegerField(verbose_name='возвраст', default=18)
     about_me = models.TextField(blank=True, verbose_name='о себе')
-    gender = models.CharField(max_length=6, blank=True, choices=GENDER_CHOICES, verbose_name='пол')
+    gender = models.CharField(
+        max_length=6,
+        blank=True,
+        choices=GENDER_CHOICES,
+        verbose_name='пол')
