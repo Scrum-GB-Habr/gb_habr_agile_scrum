@@ -8,7 +8,7 @@
             {% for post in post_list %}
                 <h2>{{ post.title }}</h2>
                 <hr>
-                <p>{{ post.description | truncatewords:40 }} <a class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Read More</a></p>
+                <p>{{ post.description | truncatewords:40 }} <a class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Читать далее</a></p>
             {% endfor %}
         </form>
         {% else %}

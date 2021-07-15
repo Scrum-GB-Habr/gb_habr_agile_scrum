@@ -1,5 +1,5 @@
 from django.core.exceptions import ImproperlyConfigured
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.forms import models as model_forms
 from .models import Post
 from .forms import PostForm, ContactForm

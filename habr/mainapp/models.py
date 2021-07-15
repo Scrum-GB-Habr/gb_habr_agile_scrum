@@ -4,7 +4,10 @@ from authapp.models import AuthorizedUser
 
 
 class Post(models.Model):
-    user = models.ForeignKey(AuthorizedUser, on_delete=models.CASCADE, verbose_name='Пользователь')
+    user = models.ForeignKey(
+        AuthorizedUser,
+        on_delete=models.CASCADE,
+        verbose_name='Пользователь')
     title = models.CharField(max_length=70)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -19,12 +22,19 @@ class Contact(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='наименование')
-    description = models.CharField(max_length=1000, blank=True, verbose_name='описание')
+    description = models.CharField(
+        max_length=1000,
+        blank=True,
+        verbose_name='описание')
     # Служебные
     is_active = models.BooleanField(default=True, verbose_name='активна')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='создана')
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name='создана')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='изменена')
-    comment = models.CharField(max_length=1000, blank=True, verbose_name='комментарий администратора')
+    comment = models.CharField(
+        max_length=1000,
+        blank=True,
+        verbose_name='комментарий администратора')
 
     def __str__(self):
         return f'{self.name}{"" if self.is_active else "(блок)"}'
@@ -35,14 +45,24 @@ class Category(models.Model):
 
 
 class SubCategory(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='родительская категория')
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.PROTECT,
+        verbose_name='родительская категория')
     name = models.CharField(max_length=100, verbose_name='наименование')
-    description = models.CharField(max_length=1000, blank=True, verbose_name='описание')
+    description = models.CharField(
+        max_length=1000,
+        blank=True,
+        verbose_name='описание')
     # Служебные
     is_active = models.BooleanField(default=True, verbose_name='активна')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='создана')
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name='создана')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='изменена')
-    comment = models.CharField(max_length=1000, blank=True, verbose_name='комментарий администратора')
+    comment = models.CharField(
+        max_length=1000,
+        blank=True,
+        verbose_name='комментарий администратора')
 
     def __str__(self):
         return f'{self.name}{"" if self.is_active else "(блок)"}'
@@ -53,8 +73,14 @@ class SubCategory(models.Model):
 
 
 class ArticleSubcat(models.Model):
-    article = models.ForeignKey(Post, on_delete=models.PROTECT, verbose_name='статья')
-    subcat = models.ForeignKey(SubCategory, on_delete=models.PROTECT, verbose_name='подкатегория')
+    article = models.ForeignKey(
+        Post,
+        on_delete=models.PROTECT,
+        verbose_name='статья')
+    subcat = models.ForeignKey(
+        SubCategory,
+        on_delete=models.PROTECT,
+        verbose_name='подкатегория')
     # Служебные
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -66,5 +92,8 @@ class ArticleSubcat(models.Model):
         verbose_name_plural = 'подкатегории статьи'
         # db_table = 'mainapp_articlesubcat'
         constraints = [
-            models.UniqueConstraint(fields=['article', 'subcat'], name='unique_article_subcat')
-        ]
+            models.UniqueConstraint(
+                fields=[
+                    'article',
+                    'subcat'],
+                name='unique_article_subcat')]

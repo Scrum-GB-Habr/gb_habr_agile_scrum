@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def login(request):
-    title = 'Log In'
+    title = 'Войти'
 
     login_form = AuthorizedLoginUser(data=request.POST)
     if request.method == 'POST' and login_form.is_valid():
@@ -31,7 +31,7 @@ def logout(request):
 
 
 def register(request):
-    title = 'Sign Up'
+    title = 'Регистрация'
 
     if request.method == 'POST':
         register_form = UserRegisterForm(request.POST, request.FILES)
@@ -49,10 +49,13 @@ def register(request):
 
 @login_required
 def edit(request):  # чтобы можно было редактировать профиль
-    title = 'Profile'
+    title = 'Профиль'
 
     if request.method == 'POST':
-        edit_form = UserEditProfile(request.POST, request.FILES, instance=request.user)
+        edit_form = UserEditProfile(
+            request.POST,
+            request.FILES,
+            instance=request.user)
         if edit_form.is_valid():
             edit_form.save()
             return HttpResponseRedirect(reverse('auth:edit'))
@@ -66,13 +69,15 @@ def edit(request):  # чтобы можно было редактировать 
 
 @login_required
 def change_password(request):  # смена пароля пользователя
-    title = 'Change password'
+    title = 'Изменить пароль'
     if request.method == 'POST':
         password_form = UserPasswordForm(request.user, request.POST)
         if password_form.is_valid():
             user = password_form.save()
-            update_session_auth_hash(request, user)  # меняем пароль в сессии, чтобы не вводить заново
-            messages.success(request, 'Your password was successfully updated!')
+            # меняем пароль в сессии, чтобы не вводить заново
+            update_session_auth_hash(request, user)
+            messages.success(
+                request, 'Your password was successfully updated!')
             return HttpResponseRedirect(reverse('auth:edit'))
         else:
             messages.error(request, 'Please correct the error below.')
