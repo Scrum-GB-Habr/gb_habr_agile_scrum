@@ -12,25 +12,29 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Title</th>
+                        <th scope="col">Author</th>
                         <th class="text-center" scope="col">Description</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     {% for update in total_post %}
-                        <tbody>
-                        <tr>
-                            <th scope="row">{{ update.id }}</th>
-                            <td>{{ update.title }}</td>
-                            <td>{{ update.description | truncatewords:50 }} </td>
-                            <td class="d-flex">
-                                <a class="btn-sm btn-warning" href="{% url 'main:update' update.id %}">Update</a>
-                                <form action="#" method="post">
-                                    {% csrf_token %}
-                                    <input class="btn-sm btn btn-danger" type="submit" value="Delete">
-                                </form>
-                            </td>
-                        </tr>
-                        </tbody>
+                        {% if update.user == user %}
+                            <tbody>
+                            <tr>
+                                <th scope="row">{{ update.id }}</th>
+                                <td>{{ update.title }}</td>
+                                <td>{{ update.user }}</td>
+                                <td>{{ update.description | truncatewords:50 }} </td>
+                                <td class="d-flex">
+                                    <a class="btn-sm btn-warning" href="{% url 'main:update' update.id %}">Update</a>
+                                    <form action="#" method="post">
+                                        {% csrf_token %}
+                                        <input class="btn-sm btn btn-danger" type="submit" value="Delete">
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        {% endif %}
                     {% endfor %}
                 </table>
                 </form>

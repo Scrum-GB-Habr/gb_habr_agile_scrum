@@ -1,4 +1,5 @@
 from django.core.exceptions import ImproperlyConfigured
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.forms import models as model_forms
 from .models import Post
@@ -10,7 +11,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'mainapp/home.html'
     ordering = ['-created_at']
-    paginate_by = 4
+    paginate_by = 7
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,6 +39,14 @@ class PostCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Blog | Create New Post'
         return context
+
+    def post(self, request, *args, **kwargs):
+        print(self.request.POST)
+        post = Post.objects.create(user=self.request.user, title=self.request.POST['title'], description=self.request.POST['description'])
+        post.save()
+        self.object = None
+        # return super().get(request, *args, **kwargs)
+        return HttpResponseRedirect('/success/')
 
 
 class PostSuccessMessageView(TemplateView):
