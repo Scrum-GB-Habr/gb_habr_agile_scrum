@@ -2,19 +2,19 @@
 {% load static %}
 {% block container %}
     <div class="col-sm-12 my-4">
-        <h2 class="text-center">Dashboard</h2>
+        <h2 class="text-center">Мои статьи</h2>
         <form action="" method="post">
             {% csrf_token %}
-            <a class="btn btn-success" href="{% url 'main:create' %}">Add New Post</a>
+            <a class="btn btn-success" href="{% url 'main:create' %}">Добавить статью</a>
             {% if total_post %}
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Author</th>
-                        <th class="text-center" scope="col">Description</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Автор</th>
+                        <th class="text-center" scope="col">Текст статьи</th>
+                        <th scope="col">Действия</th>
                     </tr>
                     </thead>
                     {% for update in total_post %}
@@ -26,11 +26,12 @@
                                 <td>{{ update.user }}</td>
                                 <td>{{ update.description | truncatewords:50 }} </td>
                                 <td class="d-flex">
-                                    <a class="btn-sm btn-warning" href="{% url 'main:update' update.id %}">Update</a>
-                                    <form action="#" method="post">
-                                        {% csrf_token %}
-                                        <input class="btn-sm btn btn-danger" type="submit" value="Delete">
-                                    </form>
+                                    <a class="btn-sm btn-warning" href="{% url 'main:update' update.id %}">Изменить</a>
+                                    <a class="btn-sm btn btn-danger" href="{% url 'main:delete' update.id %}">Удалить</a>
+{#                                    <form action="#" method="post">#}
+{#                                        {% csrf_token %}#}
+{#                                        <input class="btn-sm btn btn-danger" type="submit" value="Удалить">#}
+{#                                    </form>#}
                                 </td>
                             </tr>
                             </tbody>

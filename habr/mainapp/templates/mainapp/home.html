@@ -10,7 +10,9 @@
                         автор: {{ post.user }}</h2>
                     <hr>
                     <p style="word-wrap: break-word;">{{ post.description | truncatewords:40 }} <a
-                            class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Read More</a></p>
+                            class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Читать далее</a></p>
+                    <hr>
+                    <hr>
                 {% endfor %}
             </form>
         {% else %}
