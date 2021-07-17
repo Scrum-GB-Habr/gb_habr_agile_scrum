@@ -2,30 +2,35 @@
 {% load static %}
 {% block container %}
     <div class="col-sm-12 my-4">
-    {% if post_list %}
-        <form action="" method="post">
-        {% csrf_token %}
-            {% for post in post_list %}
-                <h2>{{ post.title }}</h2>
-                <hr>
-                <p>{{ post.description | truncatewords:40 }} <a class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Читать далее</a></p>
-            {% endfor %}
-        </form>
+        {% if post_list %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {% for post in post_list %}
+                    <h2 style="justify-content: space-between; text-align: center">"{{ post.title }}"
+                        автор: {{ post.user }}</h2>
+                    <hr>
+                    <p style="word-wrap: break-word;">{{ post.description | truncatewords:40 }} <a
+                            class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Read More</a></p>
+                {% endfor %}
+            </form>
         {% else %}
-        <h2 class="text-center text-warning my-4">Not Available Post</h2>
-    {% endif %}
-    <nav aria-label="Page navigation example">
-    <ul class="pagination">
-     {% if page_obj.has_previous %}
-        <li class="page-item"><a class="page-link"href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
-    {% endif %}
+            <h2 class="text-center text-warning my-4">Not Available Post</h2>
+        {% endif %}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                {% endif %}
 
-{#  <li class="page-item"><span class="page-link">{{ page_obj.number }}</span></li>#}
-    <li class="page-item"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
-    {% if page_obj.has_next %}
-        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
-    {% endif %}
-  </ul>
-</nav>
- </div>
+                {#  <li class="page-item"><span class="page-link">{{ page_obj.number }}</span></li>#}
+                <li class="page-item"><span
+                        class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
 {% endblock %}

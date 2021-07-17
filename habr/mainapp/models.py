@@ -13,6 +13,10 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def save(self, commit=True, *args, **kwargs):
+        print(self.__dict__)
+        super().save(*args, **kwargs)
+
 
 class Contact(models.Model):
     title = models.CharField(max_length=20)

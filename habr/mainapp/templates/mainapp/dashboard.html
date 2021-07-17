@@ -2,35 +2,39 @@
 {% load static %}
 {% block container %}
     <div class="col-sm-12 my-4">
-        <h2 class="text-center">Статьи</h2>
+        <h2 class="text-center">Dashboard</h2>
         <form action="" method="post">
             {% csrf_token %}
-            <a class="btn btn-success" href="{% url 'main:create' %}">Добавить статью</a>
+            <a class="btn btn-success" href="{% url 'main:create' %}">Add New Post</a>
             {% if total_post %}
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Title</th>
-                        <th class="text-center" scope="col">Описание</th>
+                        <th scope="col">Author</th>
+                        <th class="text-center" scope="col">Description</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     {% for update in total_post %}
-                        <tbody>
-                        <tr>
-                            <th scope="row">{{ update.id }}</th>
-                            <td>{{ update.title }}</td>
-                            <td>{{ update.description | truncatewords:50 }} </td>
-                            <td class="d-flex">
-                                <a class="btn-sm btn-warning" href="{% url 'main:update' update.id %}">Обновить</a>
-                                <form action="#" method="post">
-                                    {% csrf_token %}
-                                    <input class="btn-sm btn btn-danger" type="submit" value="Удалить">
-                                </form>
-                            </td>
-                        </tr>
-                        </tbody>
+                        {% if update.user == user %}
+                            <tbody>
+                            <tr>
+                                <th scope="row">{{ update.id }}</th>
+                                <td>{{ update.title }}</td>
+                                <td>{{ update.user }}</td>
+                                <td>{{ update.description | truncatewords:50 }} </td>
+                                <td class="d-flex">
+                                    <a class="btn-sm btn-warning" href="{% url 'main:update' update.id %}">Update</a>
+                                    <form action="#" method="post">
+                                        {% csrf_token %}
+                                        <input class="btn-sm btn btn-danger" type="submit" value="Delete">
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        {% endif %}
                     {% endfor %}
                 </table>
                 </form>

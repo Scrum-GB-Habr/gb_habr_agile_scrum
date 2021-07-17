@@ -8,9 +8,10 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = "__all__"
-        # fields = ('title', 'description',)
+        # fields = "__all__"
+        fields = ('title', 'description',)
         widgets = {
+            # 'user': forms.HiddenInput(),
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
         }
