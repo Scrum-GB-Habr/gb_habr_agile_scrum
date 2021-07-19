@@ -4,7 +4,8 @@ from django.shortcuts import render
 from django.forms import models as model_forms
 from .models import Post
 from .forms import PostForm, ContactForm
-from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView, TemplateView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView, \
+    DeleteView, TemplateView
 
 
 class PostListView(ListView):
@@ -42,7 +43,10 @@ class PostCreateView(CreateView):
 
     def post(self, request, *args, **kwargs):
         print(self.request.POST)
-        post = Post.objects.create(user=self.request.user, title=self.request.POST['title'], description=self.request.POST['description'])
+        post = Post.objects.create(user=self.request.user,
+                                   title=self.request.POST['title'],
+                                   description=self.request.POST[
+                                       'description'])
         post.save()
         self.object = None
         # return super().get(request, *args, **kwargs)
@@ -98,3 +102,13 @@ class PostDeleteView(DeleteView):
     model = Post
     success_url = '/dashboard/'
     template_name = 'mainapp/post_delete.html'
+
+
+class HelpView(TemplateView):
+    """Страница помощь"""
+    template_name = 'mainapp/help_page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Помощь'
+        return context

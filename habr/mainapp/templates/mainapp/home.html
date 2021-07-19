@@ -9,8 +9,9 @@
                     <h2 style="justify-content: space-between; text-align: center">"{{ post.title }}"
                         автор: {{ post.user }}</h2>
                     <hr>
-                    <p style="word-wrap: break-word;">{{ post.description | truncatewords:40 }} <a
+                    <p style="word-wrap: break-word;">{{ post.description | truncatewords:40 }}<a
                             class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Читать далее</a></p>
+                    <p> {{ post.created_at }} </p>
                     <hr>
                     <hr>
                 {% endfor %}
