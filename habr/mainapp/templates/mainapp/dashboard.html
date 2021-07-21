@@ -12,6 +12,7 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Название</th>
+                        <th scope="col">Категории</th>
                         <th scope="col">Автор</th>
                         <th class="text-center" scope="col">Текст статьи</th>
                         <th scope="col">Действия</th>
@@ -23,6 +24,7 @@
                             <tr>
                                 <th scope="row">{{ update.id }}</th>
                                 <td>{{ update.title }}</td>
+                                <td>{{ update.category.name }} </td>
                                 <td>{{ update.user }}</td>
                                 <td>{{ update.description | truncatewords:50 }} </td>
                                 <td class="d-flex">

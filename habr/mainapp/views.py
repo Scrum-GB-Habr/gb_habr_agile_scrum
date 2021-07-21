@@ -2,7 +2,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.forms import models as model_forms
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm, ContactForm
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, \
     DeleteView, TemplateView
@@ -42,11 +42,22 @@ class PostCreateView(CreateView):
         return context
 
     def post(self, request, *args, **kwargs):
-        print(self.request.POST)
+        # print(self.request.POST)
         post = Post.objects.create(user=self.request.user,
                                    title=self.request.POST['title'],
                                    description=self.request.POST[
                                        'description'])
+        category = self.request.POST['category']
+        print(f'категория из реквеста ---> {category}')
+
+        # TODO доделать выбор категории по id, пока не работает
+        category_name = Category.objects.filter(post__category=category)
+        print(f'ИМЯ категории ---> {category_name}')
+
+        # TODO соответственно сюда должен встать как раз из предыдущего тодо
+        post.category.set(category_name)
+        print(f'пост.категория ---> {post.category}')
+
         post.save()
         self.object = None
         # return super().get(request, *args, **kwargs)
