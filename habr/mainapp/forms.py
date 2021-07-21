@@ -17,7 +17,8 @@ from .models import Post, Contact
 #         }
 
 
-# TODO не смог разобраться, как запихать в верхнюю форму категорию красиво
+# не смог разобраться, как запихать в верхнюю форму категорию красиво,
+# поэтому переделал
 class PostForm(forms.ModelForm):
     """Форма создания статьи"""
 
@@ -25,8 +26,8 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'description', 'category')
 
-    def __init__(self, data=None, *args, **kwargs):
-        super().__init__(data=data, *args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 

@@ -36,7 +36,7 @@ class Post(models.Model):
     description = models.TextField()
     category = models.ManyToManyField(
         Category,
-        verbose_name='категории')
+        verbose_name='категории статей')
 
     is_active = models.BooleanField(
         verbose_name='активна',

@@ -47,18 +47,23 @@ class PostCreateView(CreateView):
                                    title=self.request.POST['title'],
                                    description=self.request.POST[
                                        'description'])
-        category = self.request.POST['category']
+        post.save()
+        category = int(self.request.POST['category'])
         print(f'категория из реквеста ---> {category}')
 
-        # TODO доделать выбор категории по id, пока не работает
-        category_name = Category.objects.filter(post__category=category)
-        print(f'ИМЯ категории ---> {category_name}')
+        category_obj = Category.objects.get(pk=category)
+        print(f'ИМЯ категории ---> {category_obj}')
 
-        # TODO соответственно сюда должен встать как раз из предыдущего тодо
-        post.category.set(category_name)
+        # TODO ---> не получается через .add добавить и как в примере выше
+        #  через objects.create не получится: Direct assignment to the
+        #  forward side of a many-to-many set is prohibited.
+        #  Пробовал через set, тоже не хочет,
+        #  пихал тоже по-разному, просто pk, объект и т. д. в общем туплю уже,
+        #  посмотрите свежим взглядом
+        post.category.add(category_obj)
         print(f'пост.категория ---> {post.category}')
 
-        post.save()
+
         self.object = None
         # return super().get(request, *args, **kwargs)
         return HttpResponseRedirect('/success/')
