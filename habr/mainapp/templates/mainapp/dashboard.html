@@ -24,7 +24,11 @@
                             <tr>
                                 <th scope="row">{{ update.id }}</th>
                                 <td>{{ update.title }}</td>
-                                <td>{{ update.category.name }} </td>
+                                <td>
+                                    {% for category in update.category.all %}
+                                        {{ category.name }}
+                                    {% endfor %}
+                                </td>
                                 <td>{{ update.user }}</td>
                                 <td>{{ update.description | truncatewords:50 }} </td>
                                 <td class="d-flex">

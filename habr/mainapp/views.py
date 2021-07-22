@@ -33,6 +33,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView):
     form_class = PostForm
+    model = Post
     success_url = '/success/'
     template_name = 'mainapp/post_create.html'
 
@@ -42,27 +43,20 @@ class PostCreateView(CreateView):
         return context
 
     def post(self, request, *args, **kwargs):
-        # print(self.request.POST)
         post = Post.objects.create(user=self.request.user,
                                    title=self.request.POST['title'],
                                    description=self.request.POST[
                                        'description'])
         post.save()
+
         category = int(self.request.POST['category'])
-        print(f'категория из реквеста ---> {category}')
+        # print(f'категория из реквеста ---> {category}')
 
         category_obj = Category.objects.get(pk=category)
-        print(f'ИМЯ категории ---> {category_obj}')
+        # print(f'объект категории ---> {category_obj}')
 
-        # TODO ---> не получается через .add добавить и как в примере выше
-        #  через objects.create не получится: Direct assignment to the
-        #  forward side of a many-to-many set is prohibited.
-        #  Пробовал через set, тоже не хочет,
-        #  пихал тоже по-разному, просто pk, объект и т. д. в общем туплю уже,
-        #  посмотрите свежим взглядом
         post.category.add(category_obj)
-        print(f'пост.категория ---> {post.category}')
-
+        # print(f'пост.категория ---> {post.category}')
 
         self.object = None
         # return super().get(request, *args, **kwargs)

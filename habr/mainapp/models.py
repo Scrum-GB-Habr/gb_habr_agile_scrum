@@ -59,7 +59,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, commit=True, *args, **kwargs):
-        print(self.__dict__)
+        # print(self.__dict__)
         super().save(*args, **kwargs)
 
 
