@@ -2,7 +2,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.forms import models as model_forms
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm, ContactForm
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, \
     DeleteView, TemplateView
@@ -33,6 +33,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView):
     form_class = PostForm
+    model = Post
     success_url = '/success/'
     template_name = 'mainapp/post_create.html'
 
@@ -42,12 +43,21 @@ class PostCreateView(CreateView):
         return context
 
     def post(self, request, *args, **kwargs):
-        print(self.request.POST)
         post = Post.objects.create(user=self.request.user,
                                    title=self.request.POST['title'],
                                    description=self.request.POST[
                                        'description'])
         post.save()
+        for _ in dict(self.request.POST)['category']:
+            category = int(_)
+            # print(f'категория из реквеста ---> {category}')
+
+            category_obj = Category.objects.get(pk=category)
+            # print(f'объект категории ---> {category_obj}')
+
+            post.category.add(category_obj)
+            # print(f'пост.категория ---> {post.category}')
+
         self.object = None
         # return super().get(request, *args, **kwargs)
         return HttpResponseRedirect('/success/')
