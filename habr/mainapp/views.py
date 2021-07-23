@@ -48,15 +48,15 @@ class PostCreateView(CreateView):
                                    description=self.request.POST[
                                        'description'])
         post.save()
+        for _ in dict(self.request.POST)['category']:
+            category = int(_)
+            # print(f'категория из реквеста ---> {category}')
 
-        category = int(self.request.POST['category'])
-        # print(f'категория из реквеста ---> {category}')
+            category_obj = Category.objects.get(pk=category)
+            # print(f'объект категории ---> {category_obj}')
 
-        category_obj = Category.objects.get(pk=category)
-        # print(f'объект категории ---> {category_obj}')
-
-        post.category.add(category_obj)
-        # print(f'пост.категория ---> {post.category}')
+            post.category.add(category_obj)
+            # print(f'пост.категория ---> {post.category}')
 
         self.object = None
         # return super().get(request, *args, **kwargs)
