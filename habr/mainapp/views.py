@@ -17,6 +17,20 @@ class PostListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Blog | Home'
+        context['categories'] = Category.objects.all()
+        return context
+
+
+class PostByCategoryList(DetailView):
+    """Список постов категории"""
+    model = Category
+    template_name = 'mainapp/post_by_category.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(category=self.object,
+                                               is_active=True,).order_by(
+            '-created_at')
         return context
 
 
