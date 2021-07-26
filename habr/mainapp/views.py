@@ -25,9 +25,9 @@ class PostListView(ListView):
             return Post.objects.filter(
                 category__in=[
                     self.kwargs['cat_id']],
-                is_active=True)
+                is_active=True).order_by('-updated_at')
         else:
-            return Post.objects.filter(is_active=True)
+            return Post.objects.filter(is_active=True).order_by('-updated_at')
 
 
 class PostDetailView(DetailView):
