@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.forms import models as model_forms
 from .models import Post, Category
 from .forms import PostForm, ContactForm
-from django.views.generic import ListView, CreateView, UpdateView, DetailView, \
-    DeleteView, TemplateView
+from django.views.generic import ListView, CreateView, UpdateView, \
+    DetailView, DeleteView, TemplateView
 
 
 class PostListView(ListView):
@@ -22,7 +22,10 @@ class PostListView(ListView):
     def get_queryset(self):
         # print(self.kwargs)
         if 'cat_id' in self.kwargs:
-            return Post.objects.filter(category__in = [self.kwargs['cat_id']], is_active=True)
+            return Post.objects.filter(
+                category__in=[
+                    self.kwargs['cat_id']],
+                is_active=True)
         else:
             return Post.objects.filter(is_active=True)
 
