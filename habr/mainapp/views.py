@@ -22,9 +22,9 @@ class PostListView(ListView):
     def get_queryset(self):
         # print(self.kwargs)
         if 'cat_id' in self.kwargs:
-            return Post.objects.filter(category__in = [self.kwargs['cat_id']])
+            return Post.objects.filter(category__in = [self.kwargs['cat_id']], is_active=True)
         else:
-            return Post.objects.all()
+            return Post.objects.filter(is_active=True)
 
 
 class PostDetailView(DetailView):
