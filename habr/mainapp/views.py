@@ -19,6 +19,13 @@ class PostListView(ListView):
         context['title'] = 'Blog | Home'
         return context
 
+    def get_queryset(self):
+        print(self.kwargs)
+        if 'cat_id' in  self.kwargs:
+            return Post.objects.filter(category__in = [self.kwargs['cat_id']])
+        else:
+            return Post.objects.all()
+
 
 class PostDetailView(DetailView):
     model = Post
