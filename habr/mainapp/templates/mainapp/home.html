@@ -1,5 +1,11 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% block cat_menu %}
+<hr style="height: 3px; margin: 0 auto">
+<div>
+    {% include 'mainapp/includes/inc__main_menu.html' %}
+</div>
+{% endblock %}
 {% block container %}
     <div class="col-sm-12 my-4">
         {% if post_list %}
