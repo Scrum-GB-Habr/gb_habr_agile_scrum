@@ -1,5 +1,11 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{% block cat_menu %}
+<hr style="height: 3px; margin: 0 auto">
+<div>
+    {% include 'mainapp/includes/inc__main_menu.html' %}
+</div>
+{% endblock %}
 {% block container %}
     <div class="col-sm-12 my-4">
         {% if post_list %}
@@ -7,7 +13,12 @@
                 {% csrf_token %}
                 {% for post in post_list %}
                     <h2 style="justify-content: space-between; text-align: center">"{{ post.title }}"</h2>
+                    {% if user.is_superuser %}
+                        <a href="/admin/authapp/authorizeduser/{{ user.id }}/change/" >
+                    {% endif %}
                     <h4>автор: {{ post.user }}</h4>
+                    {% if user.is_superuser %}</a>{% endif %}
+                    <h7>{% for category in post.category.all %} {{ category }} {% endfor %}</h7>
                     <hr>
                     <p style="word-wrap: break-word;">{{ post.description | truncatewords:40 }}<a
                             class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Читать далее</a></p>

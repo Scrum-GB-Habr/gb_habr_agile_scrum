@@ -9,6 +9,7 @@ urlpatterns = [
     path('post/<int:pk>/', views.PostDetailView.as_view(), name='post'),
     path('success/', views.PostSuccessMessageView.as_view(), name='success'),
     path('dashboard/', views.PostDashboardView.as_view(), name='dashboard'),
+    path('cat/<int:cat_id>', views.PostListView.as_view(), name='home'),
     path('update/<int:pk>/', views.PostUpdateView.as_view(), name='update'),
     path('contact/', views.Contact.as_view(), name='contact'),
     path('delete/<int:pk>/', views.PostDeleteView.as_view(), name='delete'),
