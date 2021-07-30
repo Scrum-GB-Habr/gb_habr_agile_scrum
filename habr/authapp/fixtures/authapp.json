@@ -1,78 +1,68 @@
 [
-    {
-        "model": "auth.group",
-        "pk": 1,
-        "fields": {
-            "name": "Модераторы",
-            "permissions": []
-        }
-    },
-    {
-        "model": "authapp.authorizeduser",
-        "pk": 1,
-        "fields": {
-            "password": "pbkdf2_sha256$260000$rbe1nBPE004sCVBJhVTBfL$iEou6zDa/pEmmDvoFW3+v/I6Dzl4Foxpn46pibDb92U=",
-            "last_login": "2021-07-15T07:26:08.029Z",
-            "is_superuser": true,
-            "username": "admin",
-            "first_name": "admin",
-            "last_name": "",
-            "email": "",
-            "is_staff": true,
-            "is_active": true,
-            "date_joined": "2021-07-15T07:14:37.105Z",
-            "avatar": "",
-            "age": 18,
-            "about_me": "",
-            "gender": "",
-            "groups": [],
-            "user_permissions": []
-        }
-    },
-    {
-        "model": "authapp.authorizeduser",
-        "pk": 2,
-        "fields": {
-            "password": "123",
-            "last_login": null,
-            "is_superuser": false,
-            "username": "user",
-            "first_name": "Пользователь",
-            "last_name": "",
-            "email": "",
-            "is_staff": false,
-            "is_active": true,
-            "date_joined": "2021-07-15T07:20:06Z",
-            "avatar": "",
-            "age": 18,
-            "about_me": "",
-            "gender": "",
-            "groups": [],
-            "user_permissions": []
-        }
-    },
-    {
-        "model": "authapp.authorizeduser",
-        "pk": 3,
-        "fields": {
-            "password": "123",
-            "last_login": null,
-            "is_superuser": false,
-            "username": "moderator",
-            "first_name": "Модератор",
-            "last_name": "",
-            "email": "",
-            "is_staff": false,
-            "is_active": true,
-            "date_joined": "2021-07-15T07:20:53Z",
-            "avatar": "",
-            "age": 18,
-            "about_me": "",
-            "gender": "",
-            "groups": [
-                1
-            ],
-            "user_permissions": []
-        }
+  {
+    "model": "authapp.authorizeduser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$3fexPTdozEBQ5LkLNHblNk$Qs3kZm/qHNK60w8/9fNcDYYoxxkdJJE1nqjmfiXEceg=",
+      "last_login": "2021-07-30T14:03:09.193Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "Бендер",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-07-30T13:45:39.194Z",
+      "avatar": "",
+      "age": 18,
+      "about_me": "",
+      "gender": "",
+      "groups": [],
+      "user_permissions": []
     }
+  },
+  {
+    "model": "authapp.authorizeduser",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$CtCT24ldEUpI8Oaeh8iZyw$HiNZdFUlmzgDZPmh8ndw55v2+bsiej65gQWoF85jj2Q=",
+      "last_login": "2021-07-30T13:54:52.876Z",
+      "is_superuser": false,
+      "username": "user",
+      "first_name": "USER",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-07-30T13:49:47.815Z",
+      "avatar": "",
+      "age": 18,
+      "about_me": "",
+      "gender": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "authapp.authorizeduser",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$AeXYhm09OW8cmbTGZu31qL$sREDZpSzuE7PE3/dnOObhAvixqirqRumc3ASNEObBMo=",
+      "last_login": "2021-07-30T13:57:11.213Z",
+      "is_superuser": false,
+      "username": "user2",
+      "first_name": "Пятница",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2021-07-30T13:57:01.381Z",
+      "avatar": "",
+      "age": 18,
+      "about_me": "",
+      "gender": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
 ]
