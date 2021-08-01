@@ -20,8 +20,12 @@
                     {% if user.is_superuser %}</a>{% endif %}
                     <h7>{% for category in post.category.all %} {{ category }} {% endfor %}</h7>
                     <hr>
-                    <p style="word-wrap: break-word;">{{ post.description | truncatewords:40 }}<a
-                            class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Читать далее</a></p>
+                    <p style="word-wrap: break-word;">{{ post.description | truncatewords:40 }}
+                        <a class="btn-sm btn btn-warning" href="{% url 'main:post' post.id %}">Читать далее</a>
+                        {% if request.user.is_superuser %}
+                            <a class="btn-sm btn btn-danger" target="_blank" href="/admin/mainapp/post/{{ post.id }}/change/">Модерировать</a>
+                        {% endif %}
+                    </p>
                     <p> {{ post.created_at }} </p>
                     <hr>
                     <hr>

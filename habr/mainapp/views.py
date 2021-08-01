@@ -22,12 +22,20 @@ class PostListView(ListView):
     def get_queryset(self):
         # print(self.kwargs)
         if 'cat_id' in self.kwargs:
-            return Post.objects.filter(
-                category__in=[
-                    self.kwargs['cat_id']],
-                is_active=True).order_by('-updated_at')
+            if self.kwargs['cat_id'] == 0 and self.request.user.is_superuser:
+                return Post.objects.filter(
+                    is_active=True,
+                    published=False,
+                    on_moderation=True
+                ).order_by('-updated_at')
+            else:
+                return Post.objects.filter(
+                    category__in=[self.kwargs['cat_id']],
+                    is_active=True,
+                    published=True
+                ).order_by('-updated_at')
         else:
-            return Post.objects.filter(is_active=True).order_by('-updated_at')
+            return Post.objects.filter(is_active=True, published=True).order_by('-updated_at')
 
 
 class PostDetailView(DetailView):

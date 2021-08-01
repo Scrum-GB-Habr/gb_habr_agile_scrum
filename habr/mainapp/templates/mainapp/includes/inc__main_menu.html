@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <ul class="navbar-nav mr-auto">
-     <li class="nav-item">
-         <a href="/" class="nav-link customcss" style="font-size: 0.9rem">
-            Все потоки
-        </a>
-     </li>
+        <li class="nav-item">
+            <a href="/" class="nav-link" style="font-size: 0.9rem">
+                Все потоки
+            </a>
+        </li>
         {% for item in my_main_menu %}
             <li class="nav-item">
                 <a href="/cat/{{ item.id }}" class="nav-link customcss" style="font-size: 0.9rem">
@@ -12,5 +12,12 @@
                 </a>
             </li>
         {% endfor %}
+        {% if request.user.is_superuser and on_modering_cnt > 0 %}
+            <li class="nav-item">
+                <a href="/cat/0" class="nav-link customcss" style="font-size: 0.9rem">
+                   На модерировании ({{ on_modering_cnt }})
+                </a>
+            </li>
+        {% endif %}
     </ul>
 </nav>
