@@ -9,6 +9,9 @@ from django.views.generic import ListView, CreateView, UpdateView, \
 
 
 class PostListView(ListView):
+    """
+    Контроллер главной страницы
+    """
     model = Post
     template_name = 'mainapp/home.html'
     ordering = ['-created_at']
@@ -39,6 +42,9 @@ class PostListView(ListView):
 
 
 class PostDetailView(DetailView):
+    """
+    Контроллер просмотра статей по отдельности
+    """
     model = Post
     context_object_name = 'post'
     template_name = 'mainapp/post_detail_view.html'
@@ -50,6 +56,9 @@ class PostDetailView(DetailView):
 
 
 class PostCreateView(CreateView):
+    """
+    Контроллер создания статей
+    """
     form_class = PostForm
     model = Post
     success_url = '/success/'
@@ -82,6 +91,9 @@ class PostCreateView(CreateView):
 
 
 class PostSuccessMessageView(TemplateView):
+    """
+    Контроллер отображения сообщения об успехе
+    """
     template_name = 'mainapp/success_page.html'
 
     def get_context_data(self, **kwargs):
@@ -91,6 +103,9 @@ class PostSuccessMessageView(TemplateView):
 
 
 class PostDashboardView(ListView):
+    """
+    Контроллер отображения личных статей
+    """
     model = Post
     context_object_name = 'total_post'
     ordering = ['-created_at']
@@ -104,6 +119,9 @@ class PostDashboardView(ListView):
 
 
 class PostUpdateView(UpdateView):
+    """
+    Контроллер изменения статьи
+    """
     form_class = PostForm
     model = Post
     success_url = '/success/'
@@ -116,6 +134,9 @@ class PostUpdateView(UpdateView):
 
 
 class Contact(CreateView):
+    """
+    Контроллер отображения формы обратной связи
+    """
     form_class = ContactForm
     success_url = '/success/'
     template_name = 'mainapp/contact.html'
@@ -127,13 +148,18 @@ class Contact(CreateView):
 
 
 class PostDeleteView(DeleteView):
+    """
+    Контроллер удаления статьи
+    """
     model = Post
     success_url = '/dashboard/'
     template_name = 'mainapp/post_delete.html'
 
 
 class HelpView(TemplateView):
-    """Страница помощь"""
+    """
+    Страница помощь
+    """
     template_name = 'mainapp/help_page.html'
 
     def get_context_data(self, **kwargs):

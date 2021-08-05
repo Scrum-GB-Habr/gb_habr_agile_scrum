@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractUser
 
 
 class AuthorizedUser(AbstractUser):
+    """
+    Расширение модели стандартного пользователя
+    """
     MALE = 'M'
     FEMALE = 'W'
 

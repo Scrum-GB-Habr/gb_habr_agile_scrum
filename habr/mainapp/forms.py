@@ -20,7 +20,9 @@ from .models import Post, Contact
 # не смог разобраться, как запихать в верхнюю форму категорию красиво,
 # поэтому переделал
 class PostForm(forms.ModelForm):
-    """Форма создания статьи"""
+    """
+    Форма создания статьи
+    """
 
     class Meta:
         model = Post
@@ -32,9 +34,10 @@ class PostForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
 
-
-
 class ContactForm(forms.ModelForm):
+    """
+    Форма обратной связи
+    """
     class Meta:
         model = Contact
         fields = "__all__"

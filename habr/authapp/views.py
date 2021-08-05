@@ -8,6 +8,11 @@ from django.contrib.auth.decorators import login_required
 
 
 def login(request):
+    """
+    Функция входа
+    :param request:
+    :return: HttpResponseRedirect
+    """
     title = 'Войти'
 
     login_form = AuthorizedLoginUser(data=request.POST)
@@ -26,11 +31,21 @@ def login(request):
 
 @login_required
 def logout(request):
+    """
+    Функция выхода пользователя
+    :param request:
+    :return: HttpResponseRedirect
+    """
     auth.logout(request)
     return HttpResponseRedirect(reverse('mainapp:home'))
 
 
 def register(request):
+    """
+    Функция регистрации пользователя
+    :param request:
+    :return: HttpResponseRedirect
+    """
     title = 'Регистрация'
 
     if request.method == 'POST':
@@ -48,7 +63,12 @@ def register(request):
 
 
 @login_required
-def edit(request):  # чтобы можно было редактировать профиль
+def edit(request):
+    """
+    Функция редактирования профиля пользователя
+    :param request:
+    :return: HttpResponseRedirect
+    """
     title = 'Профиль'
 
     if request.method == 'POST':
@@ -68,7 +88,12 @@ def edit(request):  # чтобы можно было редактировать 
 
 
 @login_required
-def change_password(request):  # смена пароля пользователя
+def change_password(request):
+    """
+    Функция смены пароля пользователя
+    :param request:
+    :return: HttpResponseRedirect
+    """
     title = 'Изменить пароль'
     if request.method == 'POST':
         password_form = UserPasswordForm(request.user, request.POST)

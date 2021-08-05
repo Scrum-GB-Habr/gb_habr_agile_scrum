@@ -4,7 +4,10 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, \
 from .models import AuthorizedUser
 
 
-class AuthorizedLoginUser(AuthenticationForm):  # форма авторизации
+class AuthorizedLoginUser(AuthenticationForm):
+    """
+    Форма авторизации
+    """
     class Meta:
         model = AuthorizedUser
         fields = ('username', 'password')
@@ -15,7 +18,10 @@ class AuthorizedLoginUser(AuthenticationForm):  # форма авторизац�
             field.widget.attrs['class'] = 'form-control'
 
 
-class UserRegisterForm(UserCreationForm):  # регистрация
+class UserRegisterForm(UserCreationForm):
+    """
+    Форма регистрации
+    """
     class Meta:
         model = AuthorizedUser
         fields = ('username', 'first_name', 'password1', 'password2', 'email')
@@ -28,6 +34,9 @@ class UserRegisterForm(UserCreationForm):  # регистрация
 
 
 class UserEditProfile(UserChangeForm):
+    """
+    Форма редактирования профиля
+    """
     class Meta:
         model = AuthorizedUser
         fields = (
@@ -49,6 +58,9 @@ class UserEditProfile(UserChangeForm):
 
 
 class UserPasswordForm(PasswordChangeForm):
+    """
+    Форма смены пароля
+    """
     class Meta:
         model = AuthorizedUser
         fields = ('password', 'password1', 'password2')

@@ -4,6 +4,9 @@ from authapp.models import AuthorizedUser
 
 
 class Category(models.Model):
+    """
+    Модель категорий
+    """
     name = models.CharField(max_length=100, verbose_name='наименование')
     description = models.CharField(
         max_length=1000,
@@ -28,6 +31,9 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    """
+    Модель статьи
+    """
     user = models.ForeignKey(
         AuthorizedUser,
         on_delete=models.CASCADE,
@@ -64,6 +70,9 @@ class Post(models.Model):
 
 
 class Contact(models.Model):
+    """
+    Модель обратной связи
+    """
     title = models.CharField(max_length=20)
     email = models.EmailField(unique=True)
     message_description = models.TextField(max_length=50)

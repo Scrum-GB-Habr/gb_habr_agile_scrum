@@ -17,11 +17,26 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from drf_spectacular.views import SpectacularAPIView
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Our project",
+        default_version='0.1',
+        description="Documentation to out project",
+        # contact=openapi.Contact(email="admin@admin.local"),
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,
+)
 
 urlpatterns = [
     path('', include('mainapp.urls', namespace='main')),
     path('admin/', admin.site.urls),
-    path('auth/', include('authapp.urls', namespace='auth'))
+    path('auth/', include('authapp.urls', namespace='auth')),
 ]
 
 if settings.DEBUG:

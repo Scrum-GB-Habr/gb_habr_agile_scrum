@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, Group
 
 from .models import Category, Post
 
+
 def my_main_menu(request):
     # print("context processor my_main_menu works")
     # my_main_menu = []
