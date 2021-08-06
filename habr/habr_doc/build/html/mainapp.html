@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Модуль mainapp &#8212; habr_project 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Модуль authapp" href="authapp.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="mainapp">
+<h1>Модуль mainapp<a class="headerlink" href="#mainapp" title="Permalink to this headline">¶</a></h1>
+<p>Основной модуль</p>
+<ul class="simple">
+<li><p>Отвечает за главную страницу, статьи, помощь и др.</p></li>
+</ul>
+<section id="module-mainapp.context_processors">
+<span id="context-processors-py"></span><h2>Скрипт context_processors.py<a class="headerlink" href="#module-mainapp.context_processors" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="mainapp.context_processors.my_main_menu">
+<span class="sig-prename descclassname"><span class="pre">mainapp.context_processors.</span></span><span class="sig-name descname"><span class="pre">my_main_menu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.context_processors.my_main_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>контекстный процессор меню категорий</p>
+</dd></dl>
+
+</section>
+<section id="module-mainapp.forms">
+<span id="forms-py"></span><h2>Скрипт forms.py<a class="headerlink" href="#module-mainapp.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.forms.ContactForm">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.forms.</span></span><span class="sig-name descname"><span class="pre">ContactForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data=None</span></em>, <em class="sig-param"><span class="pre">files=None</span></em>, <em class="sig-param"><span class="pre">auto_id='id_%s'</span></em>, <em class="sig-param"><span class="pre">prefix=None</span></em>, <em class="sig-param"><span class="pre">initial=None</span></em>, <em class="sig-param"><span class="pre">error_class=&lt;class</span> <span class="pre">'django.forms.utils.ErrorList'&gt;</span></em>, <em class="sig-param"><span class="pre">label_suffix=None</span></em>, <em class="sig-param"><span class="pre">empty_permitted=False</span></em>, <em class="sig-param"><span class="pre">instance=None</span></em>, <em class="sig-param"><span class="pre">use_required_attribute=None</span></em>, <em class="sig-param"><span class="pre">renderer=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.forms.ContactForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Форма обратной связи</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.forms.PostForm">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.forms.</span></span><span class="sig-name descname"><span class="pre">PostForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.forms.PostForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Форма создания статьи</p>
+</dd></dl>
+
+</section>
+<section id="module-mainapp.models">
+<span id="models-py"></span><h2>Скрипт models.py<a class="headerlink" href="#module-mainapp.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.models.Category">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.models.</span></span><span class="sig-name descname"><span class="pre">Category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Модель категорий</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Category.DoesNotExist">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#mainapp.models.Category.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Category.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#mainapp.models.Category.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.models.Contact">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.models.</span></span><span class="sig-name descname"><span class="pre">Contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Contact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Модель обратной связи</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Contact.DoesNotExist">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#mainapp.models.Contact.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Contact.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#mainapp.models.Contact.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.models.Post">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.models.</span></span><span class="sig-name descname"><span class="pre">Post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Модель статьи</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Post.DoesNotExist">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#mainapp.models.Post.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="mainapp.models.Post.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#mainapp.models.Post.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.models.Post.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.models.Post.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the current instance. Override this in a subclass if you want to
+control the saving process.</p>
+<p>The ‘force_insert’ and ‘force_update’ parameters can be used to insist
+that the “save” must be an SQL insert or update (or equivalent for
+non-SQL backends), respectively. Normally, they should not be set.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-mainapp.views">
+<span id="views-py"></span><h2>Скрипт views.py<a class="headerlink" href="#module-mainapp.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.Contact">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">Contact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.Contact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Контроллер отображения формы обратной связи</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.Contact.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#mainapp.views.Contact.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mainapp.forms.ContactForm" title="mainapp.forms.ContactForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">mainapp.forms.ContactForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.Contact.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.Contact.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the form into the context dict.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.HelpView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">HelpView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.HelpView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Страница помощь</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.PostCreateView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">PostCreateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostCreateView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Контроллер создания статей</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.PostCreateView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#mainapp.views.PostCreateView.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mainapp.forms.PostForm" title="mainapp.forms.PostForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">mainapp.forms.PostForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.PostCreateView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostCreateView.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the form into the context dict.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.PostCreateView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#mainapp.views.PostCreateView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mainapp.models.Post" title="mainapp.models.Post"><code class="xref py py-class docutils literal notranslate"><span class="pre">mainapp.models.Post</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.PostCreateView.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostCreateView.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle POST requests: instantiate a form instance with the passed
+POST variables and then check if it’s valid.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.PostDashboardView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">PostDashboardView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostDashboardView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Контроллер отображения личных статей</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.PostDashboardView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostDashboardView.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the context for this view.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.PostDashboardView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#mainapp.views.PostDashboardView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mainapp.models.Post" title="mainapp.models.Post"><code class="xref py py-class docutils literal notranslate"><span class="pre">mainapp.models.Post</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.PostDeleteView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">PostDeleteView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostDeleteView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Контроллер удаления статьи</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.PostDeleteView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#mainapp.views.PostDeleteView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mainapp.models.Post" title="mainapp.models.Post"><code class="xref py py-class docutils literal notranslate"><span class="pre">mainapp.models.Post</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.PostDetailView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">PostDetailView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostDetailView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Контроллер просмотра статей по отдельности</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.PostDetailView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostDetailView.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the single object into the context dict.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.PostDetailView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#mainapp.views.PostDetailView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mainapp.models.Post" title="mainapp.models.Post"><code class="xref py py-class docutils literal notranslate"><span class="pre">mainapp.models.Post</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.PostListView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">PostListView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostListView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Контроллер главной страницы</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.PostListView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostListView.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the context for this view.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.PostListView.get_queryset">
+<span class="sig-name descname"><span class="pre">get_queryset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostListView.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of items for this view.</p>
+<p>The return value must be an iterable and may be an instance of
+<cite>QuerySet</cite> in which case <cite>QuerySet</cite> specific behavior will be enabled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.PostListView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#mainapp.views.PostListView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mainapp.models.Post" title="mainapp.models.Post"><code class="xref py py-class docutils literal notranslate"><span class="pre">mainapp.models.Post</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.PostSuccessMessageView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">PostSuccessMessageView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostSuccessMessageView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Контроллер отображения сообщения об успехе</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mainapp.views.PostUpdateView">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">mainapp.views.</span></span><span class="sig-name descname"><span class="pre">PostUpdateView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostUpdateView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Контроллер изменения статьи</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.PostUpdateView.form_class">
+<span class="sig-name descname"><span class="pre">form_class</span></span><a class="headerlink" href="#mainapp.views.PostUpdateView.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mainapp.forms.PostForm" title="mainapp.forms.PostForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">mainapp.forms.PostForm</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mainapp.views.PostUpdateView.get_context_data">
+<span class="sig-name descname"><span class="pre">get_context_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mainapp.views.PostUpdateView.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the form into the context dict.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mainapp.views.PostUpdateView.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#mainapp.views.PostUpdateView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#mainapp.models.Post" title="mainapp.models.Post"><code class="xref py py-class docutils literal notranslate"><span class="pre">mainapp.models.Post</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">habr_project</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="authapp.html">Модуль authapp</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Модуль mainapp</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-mainapp.context_processors">Скрипт context_processors.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mainapp.forms">Скрипт forms.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mainapp.models">Скрипт models.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-mainapp.views">Скрипт views.py</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="authapp.html" title="previous chapter">Модуль authapp</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, team_2.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/mainapp.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
