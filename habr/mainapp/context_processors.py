@@ -5,6 +5,7 @@ from .models import Category, Post
 
 
 def my_main_menu(request):
+    """контекстный процессор меню категорий"""
     # print("context processor my_main_menu works")
     # my_main_menu = []
     my_main_menu = Category.objects.filter(post__is_active=True, post__published=True).distinct()
