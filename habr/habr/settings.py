@@ -75,9 +75,19 @@ WSGI_APPLICATION = 'habr.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    #  Для продакшена выключаем SQL-Lite
+    #  'default': {
+    #      'ENGINE': 'django.db.backends.sqlite3',
+    #      'NAME': BASE_DIR / 'db.sqlite3',
+    #  }
+    
+    # Включена СУБД MySQL
+    "default": {
+        "NAME": "nubobap$habr",
+        "ENGINE": "django.db.backends.mysql",
+        "USER": "username",
+        "PASSWORD": "password",
+        "HOST": "nubobap.mysql.pythonanywhere-services.com",
     }
 }
 
